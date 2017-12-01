@@ -9,6 +9,7 @@ export default class App extends Component {
       term: '',
       items: []
     };
+    this.removeItem = this.removeItem.bind(this);
   }
 
   onChange = (event) => {
@@ -25,24 +26,38 @@ export default class App extends Component {
     });
   }
 
+  removeItem = index => {
+        
+        const { items } = this.state;
+        const newItems = items.filter((item, i) => i !== index);
+        this.setState({ items: newItems});
+
+    }
+ 
+
   render() {
     return (
       <div className="container">
 	  <h1 className="todo-title" >Задачи</h1>
         <form className="todo-form" onSubmit={this.onSubmit}>
-          <input className="todo-form__input" placeholder="Добавьте задачу!" value={this.state.term} onChange={this.onChange} />
+          <input className="todo-form__input" placeholder="Добавьте задачу" value={this.state.term} onChange={this.onChange} />
           <button className="todo-form__button">Запись</button>
         </form>
-        <List items={this.state.items} />
+        <TodoList items={this.state.items} removeItem={this.removeItem}/>
       </div>
     );
   }
 }
 
-const List = props => (
-  <ol className="todo-list">
-    {
-      props.items.map((item, index) => <li onClick={() => alert('Удаляйся')} className="todo-list__item" key={index}>{item}</li>)
+
+class TodoList extends Component {
+    render() {
+        return(
+            <ol className="todo-list">
+                { this.props.items.map((item, index) => {
+                    return <li className="todo-list__item" onClick={() => this.props.removeItem(index)} key={item}>{ item }</li>
+                })}
+            </ol>
+        );
     }
-  </ol>
-);
+}
