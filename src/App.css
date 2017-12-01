@@ -58,10 +58,11 @@
 }
 
 .todo-list__item{
+    position: relative;
     margin-bottom: 10px;
     font-size: 20px;
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 10px 25px 10px 10px;
 
     border-radius: 4px;
     box-shadow: 0px 0px 5px 0px #ccc;
@@ -73,8 +74,23 @@
     -o-transition: transform 0.1s ease-out;
     transition: transform 0.1s ease-out;
 }
+
+.todo-list__item:after{
+    display: none;
+    content:"×";
+    font-size: 30px;
+    color: #ff7878;
+}
+
 .todo-list__item:hover{
     transform: scale(1.03);
+}
+
+.todo-list__item:hover:after{
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
 
 .todo-list__item:last-child{

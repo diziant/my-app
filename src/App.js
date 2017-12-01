@@ -40,7 +40,7 @@ export default class App extends Component {
       <div className="container">
 	  <h1 className="todo-title" >Задачи</h1>
         <form className="todo-form" onSubmit={this.onSubmit}>
-          <input className="todo-form__input" placeholder="Добавьте задачу" value={this.state.term} onChange={this.onChange} />
+          <input className="todo-form__input" placeholder="Добавьте задачу!" value={this.state.term} onChange={this.onChange} />
           <button className="todo-form__button">Запись</button>
         </form>
         <TodoList items={this.state.items} removeItem={this.removeItem}/>
