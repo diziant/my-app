@@ -49,6 +49,11 @@
     transform: scale(1.03);
 }
 
+.todo-form__button[disabled]:hover{
+    cursor: no-drop;
+    transform: none;
+}
+
 .todo-list{
     width: 280px;
     padding: 0;
