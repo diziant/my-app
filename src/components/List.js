@@ -1,4 +1,5 @@
 import React from 'react';
+import './List.css';
 
 const List = props => (
             <ol className="todo-list">
